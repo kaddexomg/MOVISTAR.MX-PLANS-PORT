@@ -50,12 +50,12 @@
         .benefit-tag { font-size: 0.65rem; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; margin-bottom: 4px; display: inline-block; }
 
         /* Estilos de inputs */
-        .input-glass { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 1rem; outline: none; transition: 0.3s; color: white; }
+        .input-glass { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 1rem; outline: none; transition: 0.3s; color: white; font-size: 0.95rem; }
         .input-glass:focus { border-color: var(--movistar-blue); background: rgba(0, 157, 244, 0.05); }
         .input-glass option { background: var(--bg-dark); color: white; }
         
         /* Modales */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 100; display: none; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 100; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         .modal-overlay.active { display: flex; opacity: 1; }
     </style>
 </head>
@@ -79,7 +79,7 @@
                 <button onclick="navigate('equipos')" class="hover:text-[#019DF4]">Catálogo Equipos</button>
                 <button onclick="navigate('portabilidad')" class="hover:text-[#5CB615]">Portabilidad</button>
             </div>
-            <button onclick="contactWhatsApp()" class="hidden md:flex items-center gap-2 glass px-4 py-2 rounded-full border-[#5CB615] text-[#5CB615] font-bold hover:bg-[#5CB615] hover:text-black transition-colors">
+            <button onclick="contactWhatsApp()" class="hidden md:flex items-center gap-2 glass px-4 py-2 rounded-full border-[#5CB615] text-[#5CB615] font-bold hover:bg-[#5CB615] hover:text-black border">
                 <i class="ph ph-whatsapp-logo"></i> Soporte
             </button>
         </div>
@@ -93,7 +93,7 @@
                 <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span class="text-xs font-bold uppercase tracking-widest text-white/70">Conectividad 5G Activa</span>
             </div>
-            <h1 class="text-6xl md:text-8xl font-black mb-6">Poder.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#019DF4] via-[#9B3092] to-[#E4007B]">Más allá del límite.</span></h1>
+            <h1 class="text-6xl md:text-8xl font-black mb-6">Poder.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#019DF4] via-[#9B3092] to-[#E4007B]">Más allá del límite</span></h1>
             <p class="text-xl text-white/60 max-w-3xl mx-auto mb-10">Presentamos los nuevos planes Pro. Apps ilimitadas, roaming internacional y velocidades 5G diseñadas para creadores.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <button onclick="navigate('planes')" class="px-10 py-5 bg-white text-black rounded-full font-black text-lg hover:scale-105 transition-transform">Ver Planes Pro</button>
@@ -102,7 +102,7 @@
 
             <!-- NUEVO BOTÓN PUBLICITARIO NEÓN -->
             <div class="flex justify-center mt-4">
-                <button onclick="navigate('planes')" class="relative px-8 py-4 font-black text-lg md:text-xl tracking-widest uppercase rounded-[2rem] bg-transparent border-2 border-[#E4007B] text-white overflow-hidden group transition-all shadow-[0_0_25px_rgba(228,0,123,0.5)] hover:shadow-[0_0_40px_rgba(1,157,244,0.7)] hover:border-[#019DF4]">
+                <button onclick="navigate('planes')" class="relative px-8 py-4 font-black text-lg md:text-xl tracking-widest uppercase rounded-[2rem] bg-transparent border-2 border-[#E4007B] text-[#E4007B] group overflow-hidden">
                     <span class="absolute inset-0 bg-gradient-to-r from-[#E4007B] to-[#019DF4] opacity-20 group-hover:opacity-100 transition-opacity duration-500 z-0"></span>
                     <span class="relative z-10 flex items-center justify-center gap-3">
                         ¿Vamos a hacer la portabilidad? <i class="ph-bold ph-rocket-launch text-2xl"></i>
@@ -232,7 +232,7 @@
                         <i class="ph-fill ph-info text-2xl text-[#019DF4]"></i>
                         <div class="text-sm">
                             <p class="font-bold text-[#019DF4] mb-1">¿Cómo obtengo mi NIP?</p>
-                            <p class="text-white/60">Desde tu chip actual, envía un <span class="text-white font-bold">SMS</span> con la palabra <span class="text-white font-bold">NIP</span> al <span class="text-white font-bold text-lg">051</span>. Recibirás 4 dígitos.</p>
+                            <p class="text-white/60">Desde tu chip actual, envía un <span class="text-white font-bold">SMS</span> con la palabra <span class="text-white font-bold">NIP</span> al número de soporte de tu operador.</p>
                         </div>
                     </div>
 
@@ -363,20 +363,22 @@
             { id: 'pro35', nombre: 'Pro 35', color: '#9B3092', gigas: '70 GB', apps: ['wa', 'ig', 'fb', 'tk', 'yt', 'nf'], price: 225, extra: 'Perplexity Pro / YT Premium' },
             { id: 'pro_ilimitado', nombre: 'Pro Ilimitado', color: '#E4007B', gigas: 'ILIMITADOS', apps: ['all'], price: 290, extra: 'Roaming USA/CAN/PR 25GB' }
         ];
-        const  PREPAGO_PRO
-        { id: `prepago30', nombre:'PREPAGO30', color: '#9B3092', gigas: '17 GB', apps: ['wa', 'ig', 'fb', 'tk', 'yt', 'nf'], price: 50, extra: 'Perplexity Pro / YT Premium' },
-        { id: `prepagofull', nombre:'PREPAGOFULL', color: '#9B3092', gigas: 'ILIMITADAS GB', apps: ['wa', 'ig', 'fb', 'tk', 'yt', 'nf'], price: 50, extra: 'Perplexity Pro / YT Premium' },
+        
+        const PREPAGO_PRO = [
+            { id: 'prepago30', nombre: 'PREPAGO30', color: '#9B3092', gigas: '17 GB', apps: ['wa', 'ig', 'fb', 'tk', 'yt', 'nf'], price: 50, extra: 'Perplexity Pro / YT Premium' },
+            { id: 'prepagofull', nombre: 'PREPAGOFULL', color: '#9B3092', gigas: 'ILIMITADAS GB', apps: ['wa', 'ig', 'fb', 'tk', 'yt', 'nf'], price: 50, extra: 'Perplexity Pro / YT Premium' }
+        ];
 
         // Catálogo de Equipos MOCK con Precio Total para poder cotizar
         const EQUIPOS = [
-            { id: 'e1', marca: 'Apple', modelo: 'iPhone 17 Pro Max', gama: 'Premium', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/IPHONE/iPhone%2017%20Pro%20Max.jfif', pagoInicial: 6999, precioTotal: 12999 },
-            { id: 'e2', marca: 'Apple', modelo: 'iPhone 15', gama: 'Alta', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/IPHONE/iPhone%2015%20Pro%20Max.jfif', pagoInicial: 2500, precioTotal: 9500 },
-            { id: 'e3', marca: 'Samsung', modelo: 'Galaxy S24 Ultra', gama: 'Premium', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/IPHONE/iPhone%2015%20Pro%20Max.jfif', pagoInicial: 8500, precioTotal: 32500 },
-            { id: 'e4', marca: 'Samsung', modelo: 'Galaxy A54', gama: 'Media', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/SAMGMUG/Galaxy%20A54.jfif', pagoInicial: 1500, precioTotal: 4500 },
-            { id: 'e5', marca: 'Motorola', modelo: 'Edge 50 Pro', gama: 'Alta', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/MOTOROLA/Edge%2040%20Pro.jfif', pagoInicial: 2000, precioTotal: 10000 },
-            { id: 'e6', marca: 'Xiaomi', modelo: 'Redmi Note 13 Pro', gama: 'Media', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/XIAOMI/Redmi%20Note%2013%20Pro.jfif', pagoInicial: 1000, precioTotal: 4500 },
-            { id: 'e7', marca: 'Motorola', modelo: 'MOTO G84', gama: 'Premium', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/MOTOROLA/Moto%20G84.jfif', pagoInicial: 7000, precioTotal: 9000 },
-            { id: 'e8', marca: 'Motorola', modelo: 'Moto RAZR 40', gama: 'Media', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/MOTOROLA/Razr%2040%20Ultra.jfif', pagoInicial: 800, precioTotal: 3800 },
+            { id: 'e1', marca: 'Apple', modelo: 'iPhone 17 Pro Max', gama: 'Premium', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/IPHONE/iPhone%2017%20Pro%20Max.jfif', precioTotal: 25000, pagoInicial: 5000 },
+            { id: 'e2', marca: 'Apple', modelo: 'iPhone 15', gama: 'Alta', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/IPHONE/iPhone%2015%20Pro%20Max.jfif', precioTotal: 18000, pagoInicial: 3000 },
+            { id: 'e3', marca: 'Samsung', modelo: 'Galaxy S24 Ultra', gama: 'Premium', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/IPHONE/iPhone%2015%20Pro%20Max.jfif', precioTotal: 24000, pagoInicial: 4000 },
+            { id: 'e4', marca: 'Samsung', modelo: 'Galaxy A54', gama: 'Media', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/SAMGMUG/Galaxy%20A54.jfif', precioTotal: 10000, pagoInicial: 2000 },
+            { id: 'e5', marca: 'Motorola', modelo: 'Edge 50 Pro', gama: 'Alta', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/MOTOROLA/Edge%2040%20Pro.jfif', precioTotal: 15000, pagoInicial: 3000 },
+            { id: 'e6', marca: 'Xiaomi', modelo: 'Redmi Note 13 Pro', gama: 'Media', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/XIAOMI/Redmi%20Note%2013%20Pro.jfif', precioTotal: 9000, pagoInicial: 1500 },
+            { id: 'e7', marca: 'Motorola', modelo: 'MOTO G84', gama: 'Premium', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/MOTOROLA/Moto%20G84.jfif', precioTotal: 12000, pagoInicial: 2000 },
+            { id: 'e8', marca: 'Motorola', modelo: 'Moto RAZR 40', gama: 'Media', img: 'https://raw.githubusercontent.com/kaddexomg/moxistar.mx/refs/heads/main/MOTOROLA/Razr%2040%20Ultra.jfif', precioTotal: 14000, pagoInicial: 2500 }
         ];
 
         const ESTADOS = ["Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua", "Ciudad de México", "Coahuila", "Colima", "Durango", "Estado de México", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"];
